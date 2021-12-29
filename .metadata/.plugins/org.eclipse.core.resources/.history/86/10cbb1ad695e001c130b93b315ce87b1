@@ -1,0 +1,5 @@
+package com.miniproject.module.AttendanceManagementSystem.Entity;
+
+public class PasswordChangerRequest {
+
+}

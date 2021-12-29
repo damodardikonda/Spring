@@ -1,0 +1,42 @@
+package Services_Cls;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.miniproject.module.AttendanceManagementSystem.Entity.Leave;
+import com.miniproject.module.AttendanceManagementSystem.Entity.LeaveRequest;
+
+import Repository_Cls.LeaveRepo;
+
+public class LeaveService {
+
+	@Autowired
+	private LeaveRepo leaverepo;
+	
+	public LeaveService(LeaveRepo leaverepo) {
+		this.leaverepo = leaverepo;
+	}
+	Leave ll ;
+	public String applyLeave(LeaveRequest request) {
+		
+		int eid = request.getLeave_emp_id() ;
+		ll.setLeave_emp_id(eid);
+		leaverepo.save(ll);
+		
+		return " Applied Leave SuccessFully !!!!";
+	}
+	
+	public List<Leave> viewLeaves(){
+		return leaverepo.findAll();
+	}
+	
+	public Leave findEmpLeaveById(int empid) {
+		return leaverepo.findById(empid);
+	}
+	
+	public void acceptLeaveEmp(LeaveRequest request){
+		
+		leaverepo.acceptLeave(request.isLeave_approved);
+	}
+}

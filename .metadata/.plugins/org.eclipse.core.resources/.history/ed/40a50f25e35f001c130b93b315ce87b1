@@ -1,0 +1,10 @@
+package com.miniproject.module.AttendanceManagementSystem.Entity;
+
+public class AttendanceApplyRequest {
+
+	private String fromdate ;
+	private String todate;
+	private int count;
+	
+	int holiday[] = new int[30];
+}

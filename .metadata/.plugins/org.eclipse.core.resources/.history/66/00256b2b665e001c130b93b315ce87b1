@@ -1,0 +1,11 @@
+package com.miniproject.module.AttendanceManagementSystem.Entity;
+
+@Entity
+public class RefreshToken {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String token;
+	private Instant createdDate;
+}

@@ -1,0 +1,16 @@
+package Services_Cls;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import Repository_Cls.LeaveRepo;
+
+public class LeaveService {
+
+	@Autowired
+	private LeaveRepo leaverepo;
+	
+	public LeaveService(LeaveRepo leaverepo) {
+		this.leaverepo = leaverepo;
+	}
+	
+}

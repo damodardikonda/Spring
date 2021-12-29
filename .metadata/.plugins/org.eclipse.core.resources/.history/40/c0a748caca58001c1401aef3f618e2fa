@@ -1,0 +1,22 @@
+package com.d.test;
+
+
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.damodar.HelloBean;
+
+public class Test {
+
+	public static void main(String[] args)  {
+		// TODO Auto-generated method stub
+		try {
+		ApplicationContext context = new ClassPathXmlApplicationContext("HelloBeanxml.xml");
+		///XmlBeanFactory context = new XmlBeanFactory(new ClassPathResource("HelloBeanxml.xml"));
+		HelloBean hellos = (HelloBean)context.getBean("hello");
+		hellos.HelloMethod();
+		} catch(BeansException e) {}
+	}
+
+}

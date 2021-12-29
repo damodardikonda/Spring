@@ -1,0 +1,10 @@
+package Services_Cls;
+
+import org.springframework.stereotype.Service;
+import org.springframework.mail.javamail.JavaMailSender;
+@Service
+public class MailService {
+
+	private final JavaMailSender mailsender; // Interface
+	
+}

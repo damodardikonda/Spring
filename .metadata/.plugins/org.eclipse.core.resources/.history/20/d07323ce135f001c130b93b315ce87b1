@@ -1,0 +1,16 @@
+package com.miniproject.module.AttendanceManagementSystem.controllers;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import Repository_Cls.PasswordChangerRepo;
+import Services_Cls.EmployeeService;
+
+@RestController
+@RequestMapping("/changepass")
+public class ChangePassController {
+
+	 private final EmployeeService empser;
+	 private final PasswordChangerService passchange;
+	 private final RefreshokenService refreshtoken;
+}

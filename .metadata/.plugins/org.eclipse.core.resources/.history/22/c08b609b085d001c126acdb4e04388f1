@@ -1,0 +1,17 @@
+package com.miniproject.module.AttendanceManagementSystem.Entity;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Attendance_Cls {
+
+	private int att_id;
+	private int att_emp_id;
+	private int attend_totals_days;
+	private int att_month;
+	private String date_form;
+	private int att_date_to;
+	private int total_att_marked;
+	private int att_not_marked;
+	
+}

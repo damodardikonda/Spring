@@ -1,0 +1,57 @@
+package Services_Cls;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+
+import javax.transaction.Transactional;
+import org.springframework.stereotype.Service;
+
+import com.miniproject.module.AttendanceManagementSystem.Entity.ChangePassword;
+import com.miniproject.module.AttendanceManagementSystem.Entity.NotificationEmail;
+import com.miniproject.module.AttendanceManagementSystem.Entity.Employee;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import Repository_Cls.PasswordChangerRepo;
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Transactional
+@Slf4j
+public class PasswordChangerService {
+	
+	private PasswordChangerRepo passwordrepo;
+	private MailService mailservice;
+	private final PasswordEncoder passwordencoder;
+	private EmployeeService employeeservice;
+	
+	public void addVerification(String email) {
+		ChangePassword cg = new ChangePassword();
+		cg.setCreatedDate(Instant.now());
+		cg.setEmail(email);
+		String token = UUID.randomUUID().toString();
+		cg.setToken(token);
+		passwordrepo.save(token);
+		
+		mailservice.sendMail(new NotificationEmail("Please Change your Empployee Accoount " + email +" Password , use this verification token for changing password : " + token));
+		
+	}
+	
+	public void changePassword(PasswordChangerRequest request) {
+		Optional<PasswordChangerToken> pctoken = passwordrepo.findByToken(request.getToken());
+		cg.orElseThrow(() -> {
+			log.error(" Token not found " + request.getEmail());
+			return new Exception("Token Nit Found");
+		});
+		
+		Optional<Employee> emp = employeeservice.getEmployee(cg.getEmail());
+		Employee.orElseThrow( () ->{
+			log.error("Employee not found " + request.getEmail());
+			return new Exception(" Employee not found");
+		});
+		
+		emp.get().setPassword(passwordencoder.encode(request.getPassword()));
+		employeeservice.updateEmployee(emp.get());
+		
+		passwordrepo.deleteByToken(request.getToken());
+	}
+}

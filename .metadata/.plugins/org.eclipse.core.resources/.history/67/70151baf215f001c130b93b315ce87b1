@@ -1,0 +1,42 @@
+package Services_Cls;
+
+import java.time.Instant;
+import java.util.UUID;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import com.miniproject.module.AttendanceManagementSystem.Entity.RefreshToken;
+
+import Repository_Cls.RefreshTokenRepo;
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Transactional
+@Slf4j
+public class RefreshTokenService {
+
+	private RefreshTokenRepo refreshtokenrepo;
+	
+	RefreshToken generateRefreshoken() {
+		RefreshToken refreshtoken = new RefreshToken();
+		refreshtoken.setToken(UUID.randomUUID().toString());
+		refreshtoken.setCreatedDate(Instant.now());
+		
+		return refreshtokenrepo.save(refreshtoken);
+	}
+	
+	void validateRefreshToken(String token) {
+		refreshtokenrepo.findByToken(token).orElseThrow( () -> {
+			log.error(" Invalid Refresh Token");
+			return new Exception("Invalid Refresh token");
+		}) ;
+		
+	}
+	
+	public void deleteRefreshToke(String token) {
+		refreshtokenrepo.deleteByToken(token);
+		log.info(" Token Deleted Successfully");
+	}
+}

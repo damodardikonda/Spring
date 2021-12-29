@@ -1,0 +1,14 @@
+package Repository_Cls;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.miniproject.module.AttendanceManagementSystem.Entity.ChangePassword;
+
+public interface PasswordChangerRepo extends JpaRepository<ChangePassword , Integer>{
+
+	Optional<ChangePassword> findByToken(String token);
+	
+	void deleteByToken(String token);
+}

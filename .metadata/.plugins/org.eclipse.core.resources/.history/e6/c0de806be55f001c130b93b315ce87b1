@@ -1,0 +1,20 @@
+package com.miniproject.module.AttendanceManagementSystem.controllers;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import com.miniproject.module.AttendanceManagementSystem.Entity.Attendance_Cls;
+
+@Service
+@Transactional
+public class AttendanceService {
+
+	private AttendanceRepo attendancerepo;
+	int aid = 0;
+	public void apply_Attendance(Attendance_Cls request) {
+		
+		aid = attendancerepo.findById(request.att_emp_id);
+		
+	}
+}

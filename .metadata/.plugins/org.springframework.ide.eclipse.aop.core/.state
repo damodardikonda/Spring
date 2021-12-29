@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="Employee"/>
+<aop-project name="Library"/>
+<aop-project name="hello-world"/>
+<aop-project name="Hello_World"/>
+</aop-reference-model>

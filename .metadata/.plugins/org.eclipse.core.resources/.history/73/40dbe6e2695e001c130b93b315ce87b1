@@ -1,0 +1,20 @@
+package com.miniproject.module.AttendanceManagementSystem.Entity;
+
+import javax.persistence.Entity;
+
+@Entity
+public class PasswordChangerRequest {
+	
+	private String email;
+	private String token;
+	private String password;
+	
+	public PasswordChangerRequest() {}
+	
+	public PasswordChangerRequest(String email , String token , String password) {
+		this.email = email;
+		this.token = token;
+		this.password = password;
+		
+	}
+}

@@ -1,0 +1,13 @@
+package com.d.app1;
+
+public class HelloMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		BeanFactory factory = new ClassPathXmlBeanFactory("Bean.xml");
+		HelloBean b = (HelloBean) factory.getBean("h1");
+		b.helloWorld();
+	}
+
+}

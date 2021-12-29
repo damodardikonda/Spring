@@ -1,0 +1,22 @@
+package Services_Cls;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import Repository_Cls.EmpRepo;
+
+@Service
+@Transactional
+public class EmployeeService {
+
+	private EmpRepo emprepo;
+	
+	public EmployeeService(EmpRepo emprepo) {
+		this.emprepo = emprepo;
+	}
+	
+	public String updateEmployee(Employee emp) {
+		return emprepo.save(emp);
+	}
+}

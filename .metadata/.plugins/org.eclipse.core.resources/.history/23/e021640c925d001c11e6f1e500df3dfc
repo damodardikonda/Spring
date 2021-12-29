@@ -1,0 +1,18 @@
+package Services_Cls;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import Repository_Cls.LoginRepo;
+
+@Service
+@Transactional
+public class LoginService {
+
+	private LoginRepo loginrepo;
+	
+	LoginService(LoginRepo loginrepo){
+		this.loginrepo = loginrepo;
+	}
+}

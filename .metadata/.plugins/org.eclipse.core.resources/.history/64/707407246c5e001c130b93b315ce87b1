@@ -1,0 +1,10 @@
+package Repository_Cls;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.miniproject.module.AttendanceManagementSystem.Entity.ChangePassword;
+
+public interface PasswordChangerRepo extends JpaRepository<ChangePassword , Integer>{
+
+	
+}

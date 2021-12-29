@@ -1,0 +1,9 @@
+package com.damodar;
+
+public class HelloBean {
+
+	public String HelloMethod() {
+		
+		return "Say Hello";
+	}
+}
