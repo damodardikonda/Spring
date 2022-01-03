@@ -1,6 +1,0 @@
-package com.miniproject.module.AttendanceManagementSystem.controllers;
-@Service
-@Transactional
-public class AttendanceService {
-
-}

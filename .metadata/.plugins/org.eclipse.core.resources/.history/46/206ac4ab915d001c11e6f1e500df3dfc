@@ -1,9 +1,0 @@
-package Repository_Cls;
-
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface LoginRepo extends JpaRepository<Login , Long> {
-
-	
-}

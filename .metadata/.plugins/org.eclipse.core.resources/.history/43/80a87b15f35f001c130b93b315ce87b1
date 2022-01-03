@@ -1,5 +1,0 @@
-package com.miniproject.module.AttendanceManagementSystem.Entity;
-
-public class LeaveRequest {
-
-}

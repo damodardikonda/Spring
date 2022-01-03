@@ -1,6 +1,0 @@
-package Repository_Cls;
-
-public interface PasswordChangerRepo extends JpaRepository<ChangePassword , Integer>{
-
-	
-}
